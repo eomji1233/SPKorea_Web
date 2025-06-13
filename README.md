@@ -71,108 +71,137 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
 ---
 
 ## 📂 폴더 구조
-
+<details>
+  <summary>접기/펼치기</summary>
+  
 ```
 📦 SPKorea_Front-end
-┗ 📂 src
-  ┣ 📜 App.jsx
-  ┣ 📂 assets
-  ┃ ┣ 📂 img
-  ┃ ┗ 📂 videos
-  ┣ 📂 components
-  ┃ ┣ 📜 ContactForm.jsx
-  ┃ ┣ 📜 CursorFollwer.jsx
-  ┃ ┣ 📜 Footer.css
-  ┃ ┣ 📜 Footer.jsx
-  ┃ ┣ 📜 Header.css
-  ┃ ┣ 📜 Header.jsx
-  ┃ ┣ 📜 ImageUploader.jsx
-  ┃ ┣ 📜 Logo.jsx
-  ┃ ┣ 📜 ScrollToTop.jsx
-  ┃ ┗ 📜 VideoUploader.jsx
-  ┣ 📂 contexts
-  ┃ ┗ 📜 AuthContext.jsx
-  ┣ 📜 index.js
-  ┣ 📂 pages
-  ┃ ┣ 📜 About.css
-  ┃ ┣ 📜 About.jsx
-  ┃ ┣ 📂 admin
-  ┃ ┃ ┣ 📜 WorkAdd.css
-  ┃ ┃ ┣ 📜 WorkAdd.jsx
-  ┃ ┃ ┣ 📜 WorkEdit.css
-  ┃ ┃ ┗ 📜 WorkEdit.jsx
-  ┃ ┣ 📜 Home.css
-  ┃ ┣ 📜 Home.jsx
-  ┃ ┣ 📂 user
-  ┃ ┃ ┣ 📜 Login.css
-  ┃ ┃ ┣ 📜 Login.jsx
-  ┃ ┃ ┣ 📜 SignUp.css
-  ┃ ┃ ┗ 📜 SignUp.jsx
-  ┃ ┗ 📂 work
-  ┃   ┣ 📜 WorkDetail.css
-  ┃   ┣ 📜 WorkDetail.jsx
-  ┃   ┣ 📜 WorkList.css
-  ┃   ┗ 📜 WorkList.jsx
-  ┗ 📂 utils
-    ┣ 📜 authUtils.jsx
-    ┗ 📜 s3Uploader.jsx
-```
-```
-📦 SPKorea_Back-end
-  📂src
-   ┣ 📂main
-   ┃ ┣ 📂java
-   ┃ ┃ ┗ 📂com
-   ┃ ┃ ┃ ┗ 📂spkorea
-   ┃ ┃ ┃ ┃ ┣ 📂config
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜AwsS3Config.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationFilter.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtUtil.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
-   ┃ ┃ ┃ ┃ ┣ 📂controller
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryController.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactController.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Controller.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkController.java
-   ┃ ┃ ┃ ┃ ┣ 📂dto
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequestDto.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginResponseDto.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜MainThumbnailDto.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜NewThumbnailDto.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜SignupRequestDto.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜WorkRequestDto.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkResponseDto.java
-   ┃ ┃ ┃ ┃ ┣ 📂entity
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜Category.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactMessage.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜User.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜Work.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkImage.java
-   ┃ ┃ ┃ ┃ ┣ 📂repository
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryRepository.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactMessageRepository.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRepository.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜WorkImageRepository.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkRepository.java
-   ┃ ┃ ┃ ┃ ┣ 📂service
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthService.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryService.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactService.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Service.java
-   ┃ ┃ ┃ ┃ ┃ ┣ 📜UserService.java
-   ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkService.java
-   ┃ ┃ ┃ ┃ ┗ 📜SpKoreaBackEndApplication.java
-   ┃ ┗ 📂resources
-   ┃ ┃ ┣ 📂META-INF
-   ┃ ┃ ┃ ┗ 📜additional-spring-configuration-metadata.json
-   ┃ ┃ ┣ 📂static
-   ┃ ┃ ┣ 📂templates
-   ┃ ┃ ┗ 📜application.properties
+  ┗ 📂 src
+    ┣ 📜 App.jsx
+    ┣ 📂 assets
+    ┃ ┣ 📂 img
+    ┃ ┗ 📂 videos
+    ┣ 📂 components
+    ┃ ┣ 📜 ContactForm.jsx
+    ┃ ┣ 📜 CursorFollwer.jsx
+    ┃ ┣ 📜 Footer.css
+    ┃ ┣ 📜 Footer.jsx
+    ┃ ┣ 📜 Header.css
+    ┃ ┣ 📜 Header.jsx
+    ┃ ┣ 📜 ImageUploader.jsx
+    ┃ ┣ 📜 Logo.jsx
+    ┃ ┣ 📜 ScrollToTop.jsx
+    ┃ ┗ 📜 VideoUploader.jsx
+    ┣ 📂 contexts
+    ┃ ┗ 📜 AuthContext.jsx
+    ┣ 📜 index.js
+    ┣ 📂 pages
+    ┃ ┣ 📜 About.css
+    ┃ ┣ 📜 About.jsx
+    ┃ ┣ 📂 admin
+    ┃ ┃ ┣ 📜 WorkAdd.css
+    ┃ ┃ ┣ 📜 WorkAdd.jsx
+    ┃ ┃ ┣ 📜 WorkEdit.css
+    ┃ ┃ ┗ 📜 WorkEdit.jsx
+    ┃ ┣ 📜 Home.css
+    ┃ ┣ 📜 Home.jsx
+    ┃ ┣ 📂 user
+    ┃ ┃ ┣ 📜 Login.css
+    ┃ ┃ ┣ 📜 Login.jsx
+    ┃ ┃ ┣ 📜 SignUp.css
+    ┃ ┃ ┗ 📜 SignUp.jsx
+    ┃ ┗ 📂 work
+    ┃   ┣ 📜 WorkDetail.css
+    ┃   ┣ 📜 WorkDetail.jsx
+    ┃   ┣ 📜 WorkList.css
+    ┃   ┗ 📜 WorkList.jsx
+    ┗ 📂 utils
+      ┣ 📜 authUtils.jsx
+      ┗ 📜 s3Uploader.jsx
+  ```
+  ```
+  📦 SPKorea_Back-end
+    📂src
+     ┣ 📂main
+     ┃ ┣ 📂java
+     ┃ ┃ ┗ 📂com
+     ┃ ┃ ┃ ┗ 📂spkorea
+     ┃ ┃ ┃ ┃ ┣ 📂config
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜AwsS3Config.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationFilter.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtUtil.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
+     ┃ ┃ ┃ ┃ ┣ 📂controller
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryController.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactController.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Controller.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkController.java
+     ┃ ┃ ┃ ┃ ┣ 📂dto
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequestDto.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginResponseDto.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜MainThumbnailDto.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜NewThumbnailDto.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜SignupRequestDto.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜WorkRequestDto.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkResponseDto.java
+     ┃ ┃ ┃ ┃ ┣ 📂entity
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜Category.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactMessage.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜User.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜Work.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkImage.java
+     ┃ ┃ ┃ ┃ ┣ 📂repository
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryRepository.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactMessageRepository.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRepository.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜WorkImageRepository.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkRepository.java
+     ┃ ┃ ┃ ┃ ┣ 📂service
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthService.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜CategoryService.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜ContactService.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Service.java
+     ┃ ┃ ┃ ┃ ┃ ┣ 📜UserService.java
+     ┃ ┃ ┃ ┃ ┃ ┗ 📜WorkService.java
+     ┃ ┃ ┃ ┃ ┗ 📜SpKoreaBackEndApplication.java
+     ┃ ┗ 📂resources
+     ┃ ┃ ┣ 📂META-INF
+     ┃ ┃ ┃ ┗ 📜additional-spring-configuration-metadata.json
+     ┃ ┃ ┣ 📂static
+     ┃ ┃ ┣ 📂templates
+     ┃ ┃ ┗ 📜application.properties
+</details>
 ```
 
 </details>
+
+---
+
+## 📄 API 명세서  
+![image](https://github.com/user-attachments/assets/ec61fc21-a0b8-493e-b97a-9744adb73744)
+
+| 메서드 | URL                | 설명                        | 요청 바디                | 응답 예                      | 인증 필요 여부 |
+|:-------|:-------------------|:---------------------------|:------------------------|:-----------------------------|:--------------|
+| GET    | /api/work          | 모든 작업(포트폴리오) 조회  | 없음                    | 작업 배열                   | 아니오        |
+| POST   | /api/work          | 새 작업 생성               | WorkRequestDto          | 생성된 작업 객체            | 예            |
+| GET    | /api/work/{id}     | 특정 작업 상세 조회        | 없음                    | WorkResponseDto             | 아니오        |
+| PUT    | /api/work/{id}     | 특정 작업 수정             | WorkRequestDto          | 수정된 작업 객체            | 예            |
+| DELETE | /api/work/{id}     | 특정 작업 삭제             | 없음                    | 성공 메시지                 | 예            |
+| GET    | /api/work/thumbnails | 메인 썸네일 목록 조회     | 없음                    | MainThumbnailDto 배열       | 아니오        |
+| GET    | /api/work/new      | 신규 썸네일 목록 조회       | 없음                    | NewThumbnailDto 배열        | 아니오        |
+| POST   | /api/contact       | 문의 메시지 전송            | ContactMessage          | 성공 메시지                 | 아니오        |
+| POST   | /api/auth/signup   | 회원가입                  | SignupRequestDto        | 성공 메시지                 | 아니오        |
+| POST   | /api/auth/login    | 로그인                    | LoginRequestDto         | LoginResponseDto (토큰 포함)| 아니오        |
+| GET    | /api/s3/presign    | S3 업로드 Presigned URL 발급| 쿼리파라미터: key, contentType | presigned URL 객체     | 예            |
+| GET    | /api/category      | 카테고리 전체 조회          | 없음                    | 문자열 배열                 | 아니오        |
+
+---
+
+## 📄 ERD 다이어그램   
+![image](https://github.com/user-attachments/assets/83a62dcb-8239-4480-a7ef-4baea021afa9)
+
 
 ---
 
