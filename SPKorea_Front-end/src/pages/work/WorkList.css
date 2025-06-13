@@ -1,0 +1,226 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.add-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.add-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid #222;
+    color: #222;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.add-btn:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+}
+
+.category-btn {
+    padding: 0.6rem 1.6rem;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    background: white;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.category-btn:hover {
+    border-color: #888;
+    color: #111;
+}
+
+.category-btn.active {
+    background-color: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.list-box {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: sans-serif;
+    text-decoration: none;
+    margin-bottom: 10rem;
+}
+
+.img-box {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.img-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.title-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+}
+
+.img-box:hover::after,
+.img-box:hover .title-overlay {
+    opacity: 1;
+}
+
+.info-top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #8d8d8d;
+}
+
+.title {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #222;
+    text-align: left;
+}
+
+.action-btns {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-btn {
+    background: none;
+    color: #4A90E2;
+    border: 1px solid #4A90E2;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    background-color: #4A90E2;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .category-bar {
+        padding-left: 1rem;
+        height: auto;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .category-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+
+    .list-box {
+        width: 95%;
+        margin-bottom: 5rem;
+    }
+
+    .img-box {
+        height: 250px;
+    }
+
+    .title-overlay {
+        font-size: 1.3rem;
+    }
+
+    .info-top {
+        font-size: 0.9rem;
+        gap: 0.3rem;
+        text-align: left;
+    }
+
+    .title {
+        font-size: 1.1rem;
+        margin-top: 0.3rem;
+    }
+
+    .edit-btn {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+}

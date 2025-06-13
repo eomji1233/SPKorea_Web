@@ -1,0 +1,261 @@
+.hero-image {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.hero-category {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.work-content {
+    background-color: #fff;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.meta-info {
+    display: flex;
+    gap: 710px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    margin-top: 14rem;
+    color: #666;
+    flex-wrap: nowrap;
+}
+
+.meta-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-label {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #999;
+}
+
+.meta-value {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #999;
+    margin-top: 0.4rem;
+}
+
+
+.description {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.youtube-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.carousel-wrapper {
+    margin: 3rem auto 12rem;
+    max-width: 800px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    padding: 1rem 1rem 3rem;
+    position: relative;
+    overflow: visible;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    touch-action: pinch-zoom;
+    user-select: none;
+}
+
+.carousel-image:hover {
+    transform: scale(1.05);
+}
+
+.carousel-wrapper .slick-dots {
+    bottom: -6rem;
+    position: absolute;
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.carousel-wrapper .slick-dots li button:before {
+    font-size: 12px;
+    color: #bbb;
+    opacity: 1;
+    transition: color 0.3s ease;
+}
+
+.carousel-wrapper .slick-dots li.slick-active button:before {
+    color: #5a67d8;
+}
+
+.carousel-wrapper .slick-dots li {
+    margin: 0 6px;
+}
+
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+}
+
+.lightbox-image {
+    width: 1200px;
+    max-height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+body.dark .lightbox-close {
+    color: #ddd;
+}
+
+/* 반응형 (태블릿 및 모바일) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-category {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        height: 70vh;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-category {
+        font-size: 1.2rem;
+    }
+
+    .work-content {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .meta-info {
+        width: 95%;
+        justify-content: space-between;
+        padding: 0 0.5rem;
+        display: flex;
+        gap: 5rem;
+        margin-top: 6rem;
+    }
+
+    .meta-label,
+    .meta-value {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    .description {
+        font-size: 1.2rem;
+    }
+
+    .carousel-wrapper {
+        max-width: 100%;
+        padding-bottom: 3rem;
+    }
+
+    .carousel-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-category {
+        font-size: 1rem;
+    }
+
+}

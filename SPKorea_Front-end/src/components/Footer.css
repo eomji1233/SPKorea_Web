@@ -1,0 +1,116 @@
+  * {
+      margin: 0;
+      padding: 0;
+  }
+
+  .footer {
+    background-color: #006FFF;
+    color: white;
+  }
+
+  .footer-top {
+    border-bottom: 1px solid white;
+    padding: 60px 60px 15px;
+  }
+
+  .logoEng {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+  }
+
+  .logoKor {
+    margin: 0;
+  }
+
+  .footer-sns {
+  display: flex;
+  gap: 16px;
+  font-size: 40px;
+}
+
+.footer-sns a {
+  color: #ff0000;
+  transition: color 0.3s ease;
+}
+
+  .footer-bottom {
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .footer-line {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 60px;
+  }
+
+  .footer-line p {
+    margin: 0;
+  }
+
+  .contact {
+    white-space: nowrap;
+    padding-left: 20px;
+  }
+
+  .copyright {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+
+@media (max-width: 768px) {
+  .footer-top {
+    padding: 40px 20px 10px;
+    justify-content: flex-start;
+  }
+
+  .logoEng {
+    font-size: 2rem;
+    text-align: left;
+    margin-right: 12px;
+  }
+
+  .logoKor {
+    text-align: left;
+    margin-top: 4px;
+    margin-right: auto; 
+  }
+
+  .footer-sns {
+    justify-content: flex-start; 
+    margin-top: 12px;
+    font-size: 32px;
+  }
+
+  .footer-bottom {
+    padding: 20px;
+    font-size: 0.75rem;
+  }
+
+  .footer-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .footer-line p {
+    white-space: normal; 
+  }
+
+  .contact {
+    padding-left: 0;
+  }
+
+  .copyright {
+    text-align: left; 
+    font-size: 0.7rem;
+  }
+}
