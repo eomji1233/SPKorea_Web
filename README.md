@@ -216,14 +216,13 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
 - **배포 방식**: 
   - 프론트: 자동 배포
   - 백엔드: EC2 수동 배포 (`scp`, `nohup`)
----
 
 ### 🌐 프론트엔드 (React)
 
 #### ✅ 구성 요소
 - React SPA 빌드 결과물을 S3에 업로드 (정적 웹사이트 호스팅)
 - CloudFront를 통해 CDN 캐싱 및 HTTPS 접속 제공
-- Route53을 통해 사용자 도메인 연결 (`www.example.com`)
+- Route53을 통해 사용자 도메인 연결 (`www.spkorea.art`)
 - SSL 인증서는 AWS Certificate Manager(ACM)에서 관리
 
 #### 🛠 배포 자동화 (CI/CD)
@@ -233,10 +232,8 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
   3. `aws cloudfront create-invalidation` → 캐시 무효화
 
 #### 🔒 보안 고려
-- S3는 CloudFront만 접근 가능하도록 OAI (Origin Access Identity) 구성 가능
+- S3는 CloudFront만 접근 가능하도록 OAI (Origin Access Identity) 구성
 - HTTPS 강제 리디렉션 설정 (CloudFront + Route53)
-
----
 
 ### ⚙️ 백엔드 (Spring Boot)
 
@@ -250,15 +247,12 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
 - 수동 배포 방식 사용:
   ```bash
   mvn clean package
-  scp target/app.jar ec2-user@<EC2 IP>:/home/ec2-user/
-  nohup java -jar app.jar > log.txt 2>&1 &
-
+  scp -i ~/Downloads/spkorea-keypair.pem target/SPKorea_Back-end-0.0.1-SNAPSHOT.jar ubuntu@54.180.87.139:~
+  ssh -i ~/Downloads/spkorea-keypair.pem ubuntu@54.180.87.139
+  nohup java -jar SPKorea_Back-end-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 
 ## 📄 추가 예정 문서 및 자료
 
-- API 명세서 (Swagger / Postman 등) 곧 추가 예정  
-- 데이터베이스 ERD 및 관계도  
-- AWS 아키텍처 다이어그램  
 - GitHub Actions 기반 CI/CD 파이프라인 구성도  
 - 개발 일지 (주요 오류 및 해결 과정 기록)
 - 운영중인 서비스 스크린샷과 설명
