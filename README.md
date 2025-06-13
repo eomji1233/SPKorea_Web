@@ -202,8 +202,57 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
 ## 📄 ERD 다이어그램   
 ![image](https://github.com/user-attachments/assets/83a62dcb-8239-4480-a7ef-4baea021afa9)
 
+---
+
+## 📦 AWS 아키텍처
+![image](https://github.com/user-attachments/assets/e033bc7a-700f-4439-9dc7-1c6099ce5ea2)
+
+- **프론트엔드**: React (정적 SPA)
+- **백엔드**: Spring Boot (REST API)
+- **데이터베이스**: AWS RDS (MySQL)
+- **파일 업로드**: AWS S3 (Presigned URL 기반 직접 업로드)
+- **도메인**: Route53 + ACM (가비아 도메인 연동)
+- **CI/CD**: GitHub Actions (프론트 자동 배포)
+- **배포 방식**: 
+  - 프론트: 자동 배포
+  - 백엔드: EC2 수동 배포 (`scp`, `nohup`)
+---
+
+### 🌐 프론트엔드 (React)
+
+#### ✅ 구성 요소
+- React SPA 빌드 결과물을 S3에 업로드 (정적 웹사이트 호스팅)
+- CloudFront를 통해 CDN 캐싱 및 HTTPS 접속 제공
+- Route53을 통해 사용자 도메인 연결 (`www.example.com`)
+- SSL 인증서는 AWS Certificate Manager(ACM)에서 관리
+
+#### 🛠 배포 자동화 (CI/CD)
+- **GitHub Actions** 워크플로우 구성:
+  1. `npm run build` → 빌드 생성
+  2. `aws s3 sync` → 정적 파일 S3 업로드
+  3. `aws cloudfront create-invalidation` → 캐시 무효화
+
+#### 🔒 보안 고려
+- S3는 CloudFront만 접근 가능하도록 OAI (Origin Access Identity) 구성 가능
+- HTTPS 강제 리디렉션 설정 (CloudFront + Route53)
 
 ---
+
+### ⚙️ 백엔드 (Spring Boot)
+
+#### ✅ 구성 요소
+- Spring Boot 애플리케이션을 EC2에서 실행
+- Nginx를 리버스 프록시로 설정하여 HTTPS 처리
+- EC2 → RDS (MySQL) 연결
+- API 경로는 `/api/**`로 라우팅
+
+#### 🛠 배포 방식
+- 수동 배포 방식 사용:
+  ```bash
+  mvn clean package
+  scp target/app.jar ec2-user@<EC2 IP>:/home/ec2-user/
+  nohup java -jar app.jar > log.txt 2>&1 &
+
 
 ## 📄 추가 예정 문서 및 자료
 
