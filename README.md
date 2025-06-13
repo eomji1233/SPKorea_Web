@@ -183,3 +183,5 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
 - AWS 아키텍처 다이어그램  
 - GitHub Actions 기반 CI/CD 파이프라인 구성도  
 - 개발 일지 (주요 오류 및 해결 과정 기록)
+- 운영중인 서비스 스크린샷과 설명
+- 핵심 기능별 기술 스택 및 구조 설명(예: Presigned URL 구조, JWT 인증 흐름도 등)
