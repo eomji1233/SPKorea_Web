@@ -12,7 +12,7 @@
 
 본 프로젝트는 제가 혼자 전 과정(기획, 설계, 개발, 배포)을 담당한 스타트업 공식 홈페이지입니다.  
 React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안정성과 보안을 고려한 완성도 높은 서비스를 구현했습니다.  
-특히, Presigned URL 기반 보안 파일 업로드, JWT 인증 시스템, 그리고 GitHub Actions CI/CD 자동화 구축 등  
+Presigned URL 기반 보안 파일 업로드, JWT 인증 시스템, 그리고 GitHub Actions CI/CD 자동화 구축 등  
 실무 환경에서 요구되는 다양한 기술들을 직접 설계하고 적용해 경험을 쌓았습니다.
 
 
@@ -172,7 +172,6 @@ React 프론트엔드와 Spring Boot 백엔드, AWS 인프라를 활용해 안�
      ┃ ┃ ┣ 📂static
      ┃ ┃ ┣ 📂templates
      ┃ ┃ ┗ 📜application.properties
-</details>
 ```
 
 </details>
