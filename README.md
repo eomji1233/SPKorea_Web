@@ -136,6 +136,80 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
 
 ---
 
+## ⚠️ 주요 오류 해결 기록
+
+<details>
+<summary>클라우드 인프라 아키텍처 - 404 오류 및 API 라우팅 문제</summary>
+
+### 🚨 문제상황
+- 배포 후 전체 서비스에서 404 오류 발생  
+- API 요청이 의도와 다르게 S3 정적 리소스로 라우팅됨
+
+### 🔥 기술적 분석
+- CloudFront + EC2 + S3 하이브리드 아키텍처에서 요청 분산 로직 부재  
+- API 엔드포인트(`/api/**`)와 정적 리소스 간 명확한 라우팅 규칙 필요
+
+### 🌀 해결방안
+- CloudFront Behaviors 설정  
+  - `/api/**` → EC2 Spring Boot 서버 (Origin)  
+  - `/*` (기본) → S3 정적 리소스 (Origin)  
+- Origin Protocol Policy 최적화
+
+</details>
+
+<details>
+<summary>클라우드 인프라 아키텍처 - 백엔드 API 호출 403 Forbidden 오류</summary>
+
+### 🚨 문제상황
+- 프론트엔드는 정상 작동하나 백엔드 API 호출 시 403 Forbidden 오류 발생
+
+### 🔥 기술적 분석
+- CloudFront Origin 설정이 HTTPS Only로 구성됨  
+- EC2 서버는 HTTP(포트 8080)만 리스닝하여 프로토콜 불일치 발생
+
+### 🌀 해결방안
+- Origin Protocol Policy를 HTTP Only로 변경하여 프로토콜 불일치 해결
+
+</details>
+
+<details>
+<summary>AWS 보안 아키텍처 개선 - presignedURL 보안 강화 및 이미지 로딩 문제</summary>
+
+### 🚨 문제상황
+- 클라이언트 측에 AWS Access Key 하드코딩으로 보안 위험 노출  
+- presignedURL 도입 후 기존 이미지 URL 경로 이슈 발생 (이미지 로딩 실패)
+
+### 🔥 기술적 분석
+- 초기 개발 시 프론트엔드에서 직접 S3 업로드 (보안 취약점)  
+- presignedURL 도입 후 상대경로 저장으로 인해 이미지가 정상 노출되지 않음
+
+### 🌀 해결방안
+- presignedURL 방식 도입으로 보안 강화  
+- CloudFront 캐시 무효화 수행하여 URL 정합성 확보  
+- 절대경로 및 상대경로 문제 해결하여 이미지 서빙 안정화
+
+</details>
+
+<details>
+<summary>SPA 최적화 - React Router 새로고침 404 오류</summary>
+
+### 🚨 문제상황
+- React Router를 사용하는 SPA에서 새로고침 또는 직접 URL 접근 시 404 오류 발생
+
+### 🔥 기술적 분석
+- S3 + CloudFront 환경에서 SPA 라우팅 처리 로직 부재  
+- 서버가 해당 경로에 실제 파일이 없다고 판단하여 404 오류 반환
+
+### 🌀 해결방안
+- CloudFront Error Pages 설정:  
+  - 403, 404 오류 발생 시 `/index.html`로 리다이렉트  
+  - 응답 코드(Response Code)를 200으로 변경하여 SPA 라우팅 지원
+
+</details>
+
+
+---
+
 ## 📂 폴더 구조
 <details>
   <summary>접기/펼치기</summary>
