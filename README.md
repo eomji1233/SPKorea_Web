@@ -17,16 +17,23 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
 #### 🟦 프론트엔드 (React)
 - ⚛️ React SPA 아키텍처 및 Context 기반 상태 관리
 - ☁️ AWS S3 + CloudFront 기반 정적 웹사이트 배포
-- 🔐 Presigned URL 방식 적용 → 보안성 높은 이미지 업로드
+- 🔐 사용자 직접 업로드 방식(Presigned URL)으로 성능 개선 및 보안 강화
 - ⚙️ GitHub Actions 기반 CI/CD 자동화
 - 🌐 CORS, HTTPS 대응으로 안정적인 API 통신 구현
 
 #### 🟥 백엔드 (Spring Boot)
 - 🖥️ RESTful API 서버 설계 (Spring Boot + Spring Security)
-- 🔑 JWT 기반 사용자 인증 및 Spring Security 인가 처리
+- 🔑 JWT 토큰 기반 인증 흐름 및 Spring Security Role 인가 처리
 - 🗄️ Hibernate + MySQL → AWS RDS 연동으로 DB 구성
 - 🔒 EC2 + Nginx + HTTPS 환경에 수동 배포
 - 📧 Spring Mail 기반 이메일 발송 기능
+
+#### 🔒 보안 설계 포인트
+- JWT 토큰의 만료·재발급 정책 및 Spring Security 기반 Role 인가 관리
+- HTTP to HTTPS 강제 리디렉션 및 SSL 인증서 적용
+- `.env` 등 환경변수 분리로 민감 정보 GitHub 노출 방지
+- S3에 직접 접근 차단 → CloudFront OAC 기반 경로 통제
+- EC2는 보안 그룹 설정으로 특정 IP만 SSH 접근 허용
 
 ---
 
@@ -77,13 +84,16 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
 ## ⚙️ 아키텍처 및 배포 구조
 
 - **Frontend**
-  - 정적 SPA: React → S3 + CloudFront
-  - CI/CD: GitHub Actions → S3 배포, CloudFront 캐시 무효화
+  - React 기반 정적 SPA → AWS S3 + CloudFront로 배포
+  - GitHub Actions를 통한 CI/CD 자동화 (S3 업로드 및 CloudFront 캐시 무효화)
+  
 - **Backend**
-  - EC2 + Nginx + Spring Boot
-  - 수동 배포 (JAR `scp` 전송 + `nohup` 실행)
+  - Spring Boot 애플리케이션 → EC2 + Nginx에서 호스팅
+  - 수동 배포 방식 (JAR 파일 `scp` 전송 후 `nohup`으로 실행)
+  
 - **기타**
-  - RDS(MySQL), 도메인(Route53 + 가비아), HTTPS(ACM)
+  - 데이터베이스: AWS RDS (MySQL)
+  - 도메인 및 SSL: Route53 + 가비아 도메인 연동, AWS ACM으로 HTTPS 인증서 관리
 
 ---
 
