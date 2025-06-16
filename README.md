@@ -231,7 +231,7 @@ Presigned URL 기반 보안 파일 업로드, JWT 인증 시스템, 그리고 Gi
   3. `aws cloudfront create-invalidation` → 캐시 무효화
 
 #### 🔒 보안 고려
-- S3는 CloudFront만 접근 가능하도록 OAI (Origin Access Identity) 구성
+- S3는 CloudFront만 접근 가능하도록 OAC (Origin Access Control) 구성
 - HTTPS 강제 리디렉션 설정 (CloudFront + Route53)
 
 ### ⚙️ 백엔드 (Spring Boot)
