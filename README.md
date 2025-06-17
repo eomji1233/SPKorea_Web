@@ -136,8 +136,7 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
 
 ---
 
-## ⚠️ 주요 오류 해결 기록
-
+## ⚠️ 트러블슈팅
 <details>
 <summary>클라우드 인프라 아키텍처 - 404 오류 및 API 라우팅 문제</summary>
 
