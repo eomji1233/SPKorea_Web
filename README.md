@@ -22,7 +22,7 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
 - 🌐 CORS, HTTPS 대응으로 안정적인 API 통신 구현
 
 #### 🟥 백엔드 (Spring Boot)
-- 🖥️ RESTful API 서버 설계 (Spring Boot + Spring Security)
+- 🖥️ RESTful API 서버 설계
 - 🔑 JWT 토큰 기반 인증 흐름 및 Spring Security Role 인가 처리
 - 🗄️ Hibernate + MySQL → AWS RDS 연동으로 DB 구성
 - 🔒 EC2 + Nginx + HTTPS 환경에 수동 배포
