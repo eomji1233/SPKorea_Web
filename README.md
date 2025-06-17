@@ -313,8 +313,3 @@ S3 Presigned URL 이미지 업로드, JWT 인증 시스템, CI/CD 자동화 등
      ┃ ┃ ┗ 📜application.properties
 ```
 </details>
-
-## 📄 추가 예정 문서 및 자료
-- 개발 일지 (주요 오류 및 해결 과정 기록)
-- 운영중인 서비스 스크린샷과 설명
-- 핵심 기능별 기술 스택 및 구조 설명(예: Presigned URL 구조, JWT 인증 흐름도 등)
